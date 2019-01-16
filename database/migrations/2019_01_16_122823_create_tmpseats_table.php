@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
@@ -14,7 +14,10 @@ class CreateTmpseatsTable extends Migration
     public function up()
     {
         Schema::create('tmpseats', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('seat_id');
+            $table->string('seatname');
+            $table->integer('user_id');
+            $table->integer('movie_id');
             $table->timestamps();
         });
     }

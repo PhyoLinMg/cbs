@@ -15,6 +15,10 @@ class CreateSeattypesTable extends Migration
     {
         Schema::create('seattypes', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('room_id');
+            $table->string("seatrow");
+            $table->integer("seatprice");
+            $table->integer("quantity");
             $table->timestamps();
         });
     }

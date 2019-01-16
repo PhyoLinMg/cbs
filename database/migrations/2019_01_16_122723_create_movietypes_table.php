@@ -15,6 +15,7 @@ class CreateMovietypesTable extends Migration
     {
         Schema::create('movietypes', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
             $table->timestamps();
         });
     }
