@@ -2,6 +2,7 @@
 @section("title")
 <title>Admin Panel</title>
 @endsection
+@include('admin.header')
 @section('content')
-<p>shit</p>
+
 @endsection

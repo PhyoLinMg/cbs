@@ -1,5 +1,5 @@
 <?php
-
+use App\Movie;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,10 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
+	$movies=Movie::get();
+    return view('welcome',compact('movies'));
 });
 
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('/booking','HomeController@booking')->name('booking');
+Route::get('/layout','HomeController@layout')->name('layout');
 
 Route::get('login', 'SingleLoginController@showLoginForm')->name('login');
 Route::post('login', 'SingleLoginController@login');
@@ -27,6 +31,7 @@ Route::post('register', 'Auth\RegisterController@register');
 
 
 Route::resource('admin',"AdminHomeController");
+Route::resource('movie',"MovieController");
 
  // Password Reset Routes...
 Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');

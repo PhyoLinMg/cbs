@@ -25,4 +25,10 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    public function booking(){
+        return view('all.booking');
+    }
+    public function layout(){
+
+    }
 }
