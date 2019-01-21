@@ -16,12 +16,16 @@ mix.js('resources/js/app.js', 'public/js')
 
  mix.styles([
  	"resources/css/style.css",
- 	"resources/css/custom.css",
  	"resources/css/pace.min.css",
  	"resources/vendors/css/vendor.bundle.base.css",
  	"resources/vendors/css/vendor.bundle.addons.css",
  	"resources/vendors/iconfonts/mdi/css/materialdesignicons.min.css"
  	], 'public/css/all.css');
+
+
+ mix.styles([
+ 	"resources/css/custom.css",
+ 	], 'public/css/custom1.css');
 
 mix.scripts([
 	"resources/vendors/js/vendor.bundle.base.js",
