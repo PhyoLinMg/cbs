@@ -33,6 +33,7 @@ Route::post('register', 'Auth\RegisterController@register');
 
 Route::resource('admin',"AdminHomeController");
 Route::resource('movie',"MovieController");
+Route::resource("movietype","MovieTypeController");
 
  // Password Reset Routes...
 Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');

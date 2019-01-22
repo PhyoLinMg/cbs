@@ -36,7 +36,7 @@ class MovieTypeController extends Controller
      */
     public function store(Request $request)
     {
-        $request ->validate(Movietype::$rules);
+        //$request ->validate(Movietype::$rules);
         $movietype = Movietype::create([
             'name' => $request->name
         ]);

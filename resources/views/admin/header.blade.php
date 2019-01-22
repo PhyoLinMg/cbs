@@ -106,7 +106,7 @@
             </li>
             
             <li class="nav-item">
-              <a class="nav-link" href="">
+              <a class="nav-link" href="{{route('movie.index')}}">
                 <i class="menu-icon mdi mdi-backup-restore"></i>
                 <span class="menu-title">Movies</span>
               </a>

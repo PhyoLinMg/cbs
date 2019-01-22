@@ -6,8 +6,8 @@ Dropzone.options.myDropzone= {
     autoProcessQueue: false,
     uploadMultiple: true,
     parallelUploads: 5,
-    maxFiles: 1,
-    maxFilesize: 5,
+    maxFiles: 5,
+    maxFilesize: 1,
     acceptedFiles: 'image/*',
     addRemoveLinks: true,
     removeAllFiles: true,
@@ -24,7 +24,7 @@ Dropzone.options.myDropzone= {
 
         });
               this.on("maxfilesexceeded", function(file) {
-       alert("You can only add one photos.");
+       alert("You can only add three photos.");
               this.removeFile(file);
       });
         this.on("addedfile", function(file) {

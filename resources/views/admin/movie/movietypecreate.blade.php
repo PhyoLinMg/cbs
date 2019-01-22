@@ -6,7 +6,7 @@
 	<div class="row">
 		<div class="col">
 			<div class="card-body">
-				<form method="post" action="{{ route('movie.store') }}">
+				<form method="post" action="{{ route('movietype.store') }}">
 					{{ csrf_field() }}
 					<div class="form-group">
 						<label for="name">Type of Movie</label>

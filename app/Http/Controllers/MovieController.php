@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Movie;
+use App\Movietype;
+use App\Room;
 
 class MovieController extends Controller
 {
@@ -15,7 +17,7 @@ class MovieController extends Controller
     public function index()
     {
         //
-        $movies=Movie::get();
+        $movies=Movie::paginate(5);
         return view('admin.movie.index',compact('movies'));
     }
 
@@ -27,6 +29,9 @@ class MovieController extends Controller
     public function create()
     {
         //
+        $rooms=Room::get();
+        $movietype=Movietype::get()->pluck('name','id');
+        return view('admin.movie.create',compact('rooms','movietype'));
     }
 
     /**
@@ -37,7 +42,20 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $movie=Movie::create([
+            'name'=>$request->name,
+            'room_id'=>$request->room,
+            'descrption'=>$request->description,
+            'startdate'=>$request->startdate,
+            'enddate'=>$request->enddate
+        ]);
+        if (isset($request->avatar)) {
+            $movie->addMediaFromRequest('avatar')->toMediaCollection();
+        }
+
+        $movie->types()->attach($request->types);
+        $movie->save();
     }
 
     /**
@@ -60,6 +78,9 @@ class MovieController extends Controller
     public function edit($id)
     {
         //
+        $rooms=Room::get();
+        $movie=Movie::find($id);
+        return view('admin.movie.edit',compact('movie','rooms'));
     }
 
     /**
@@ -71,7 +92,14 @@ class MovieController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $movie=Movie::findOrFail($id);
+        $movie->name=$request->name;
+        $movie->descrption=$request->description;
+        $movie->startdate=$request->startdate;
+        $movie->enddate=$request->enddate;
+        $movie->room=$request->room;
+        $movie->save();
+
     }
 
     /**
