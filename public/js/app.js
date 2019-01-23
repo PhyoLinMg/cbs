@@ -1836,6 +1836,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1843,112 +1855,42 @@ __webpack_require__.r(__webpack_exports__);
       rows: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'],
       lseats: [1, 2, 3, 4, 5],
       rseats: [6, 7, 8, 9, 10],
-      reserve: []
+      reserve: [],
+      count: 0
     };
   },
   methods: {
-    click1: function click1(index, i, row, l) {
-      var count = -1;
-      var n = row + '-' + l;
-
-      if (index == 0) {
-        if (this.$refs.a[i].style.background == "black") {
-          this.reserve.forEach(function (r1) {
-            if (r1.name == n) {
-              return count;
-            }
-
-            count++;
-          });
-          console.log(count);
-          this.reserve.splice(count, 1);
-          this.$refs.a[i].style.background = "green";
-          console.log(this.reserve);
-        } else {
-          this.$refs.a[i].style.background = "black";
-          this.reserve.push({
-            'rindex': index,
-            'cindex': i,
-            'name': row + '-' + l
-          });
-          console.log(this.reserve);
-        }
-      } else {
-        var a = index * 5 + (i + 1);
-
-        if (this.$refs.a[a - 1].style.background == "black") {
-          this.reserve.forEach(function (r1) {
-            if (r1.name == n) {
-              return count;
-            }
-
-            count++;
-          });
-          console.log(count);
-          this.reserve.splice(count, 1);
-          this.$refs.a[a - 1].style.background = "green";
-          console.log(this.reserve);
-        } else {
-          this.$refs.a[a - 1].style.background = "black";
-          this.reserve.push({
-            'rindex': index,
-            'cindex': i,
-            'name': row + '-' + l
-          });
-          console.log(this.reserve);
-        }
-      }
+    hover: function hover(event) {
+      event.target.classList.toggle("hover");
     },
-    click: function click(index, i, row, l) {
-      var count = -1;
-      var n = row + '-' + l;
+    nothover: function nothover() {
+      event.target.classList.toggle("hover");
+    },
+    click: function click(index, i, event) {
+      var cc = -1;
 
-      if (index == 0) {
-        if (this.$refs.b[i].style.background == "black") {
-          this.reserve.forEach(function (r1) {
-            if (r1.name == n) {
-              return count;
-            }
-
-            count++;
-          });
-          console.log(count);
-          this.reserve.splice(count, 1);
-          this.$refs.b[i].style.background = "green";
-          console.log(this.reserve);
-        } else {
-          this.$refs.b[i].style.background = "black";
-          this.reserve.push({
-            'rindex': index,
-            'cindex': i,
-            'name': row + '-' + l
-          });
-          console.log(this.reserve);
-        }
+      if (!event.target.classList.contains('colorblack')) {
+        var name = event.target.getAttribute('title');
+        event.target.classList.toggle("colorblack");
+        this.reserve.push({
+          'rindex': index,
+          'cindex': i,
+          'name': name
+        });
+        console.log(this.reserve);
+        this.count = 1;
       } else {
-        var a = index * 5 + (i + 1);
+        this.reserve.forEach(function (r1) {
+          if (r1.name == name) {
+            return cc;
+          }
 
-        if (this.$refs.b[a - 1].style.background == "black") {
-          this.reserve.forEach(function (r1) {
-            if (r1.name == n) {
-              return count;
-            }
-
-            count++;
-          });
-          console.log(count);
-          this.reserve.splice(count, 1);
-          this.$refs.b[a - 1].style.background = "green";
-          console.log(this.reserve);
-        } else {
-          this.$refs.b[a - 1].style.background = "black";
-          this.reserve.push({
-            'rindex': index,
-            'cindex': i,
-            'name': row + '-' + l
-          });
-          console.log(this.reserve);
-        }
+          cc++;
+        });
+        this.reserve.splice(cc, 1);
+        event.target.classList.toggle("colorblack");
+        console.log(this.reserve);
+        this.count = 0;
       }
     }
   }
@@ -6227,7 +6169,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".a1:hover {\n  background-color: grey;\n}", ""]);
+exports.push([module.i, ".hover {\n  background-color: grey;\n}", ""]);
 
 // exports
 
@@ -37448,90 +37390,82 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row justify-content-center mt-5" }, [
-    _c(
-      "div",
-      {
-        staticClass:
-          " justify-content-center col-8 col-sm-8 col-md-6 col-lg-5 col-xl-4 theatre"
-      },
-      [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: " mt-5", staticStyle: { "margin-left": "5px" } },
-          _vm._l(_vm.rows, function(row, index) {
-            return _c("div", { staticClass: "row mt-1" }, [
-              _c(
-                "div",
-                { staticClass: " mr-auto", staticStyle: { display: "flex" } },
-                _vm._l(_vm.lseats, function(l, i) {
-                  return _c(
-                    "span",
-                    {
-                      key: i,
-                      attrs: { title: row + "-" + l },
-                      on: {
-                        click: function($event) {
-                          _vm.click1(index, i, row, l)
-                        }
-                      }
-                    },
-                    [
-                      _c("div", {
-                        ref: "a",
-                        refInFor: true,
-                        class: [
-                          "a1",
-                          "colorgreen",
-                          "ml-1",
-                          { hover: _vm.enter }
-                        ]
-                      })
-                    ]
-                  )
-                }),
-                0
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: " ml-auto", staticStyle: { display: "flex" } },
-                _vm._l(_vm.rseats, function(r, i) {
-                  return _c(
-                    "span",
-                    {
-                      key: i,
-                      attrs: { title: row + "-" + r },
-                      on: {
-                        click: function($event) {
-                          _vm.click(index, i, row, r)
-                        }
-                      }
-                    },
-                    [
-                      _c("div", {
-                        ref: "b",
-                        refInFor: true,
-                        class: [
-                          "a1",
-                          "colorgreen",
-                          "ml-1",
-                          { hover: _vm.enter }
-                        ]
-                      })
-                    ]
-                  )
-                }),
-                0
-              )
-            ])
-          }),
-          0
-        )
-      ]
-    )
+  return _c("div", {}, [
+    _c("div", { staticClass: "row justify-content-center mt-5" }, [
+      _c(
+        "div",
+        {
+          staticClass:
+            " justify-content-center col-8 col-sm-8 col-md-6 col-lg-5 col-xl-4 theatre"
+        },
+        [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: " mt-5", staticStyle: { "margin-left": "5px" } },
+            _vm._l(_vm.rows, function(row, index) {
+              return _c("div", { staticClass: "row mt-1" }, [
+                _c(
+                  "div",
+                  { staticClass: " mr-auto", staticStyle: { display: "flex" } },
+                  _vm._l(_vm.lseats, function(l, i) {
+                    return _c(
+                      "span",
+                      { key: i, attrs: { title: row + "-" + l } },
+                      [
+                        _c("div", {
+                          staticClass: " colorgreen ml-1 ",
+                          attrs: { title: row + "-" + l },
+                          on: {
+                            mouseenter: _vm.hover,
+                            mouseleave: _vm.nothover,
+                            click: function($event) {
+                              _vm.click(index, i, $event)
+                            }
+                          }
+                        })
+                      ]
+                    )
+                  }),
+                  0
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: " ml-auto", staticStyle: { display: "flex" } },
+                  _vm._l(_vm.rseats, function(r, i) {
+                    return _c(
+                      "span",
+                      { key: i, attrs: { title: row + "-" + r } },
+                      [
+                        _c("div", {
+                          staticClass: " colorgreen ml-1 ",
+                          attrs: { title: row + "-" + r },
+                          on: {
+                            mouseenter: _vm.hover,
+                            mouseleave: _vm.nothover,
+                            click: function($event) {
+                              _vm.click(index, i, $event)
+                            }
+                          }
+                        })
+                      ]
+                    )
+                  }),
+                  0
+                )
+              ])
+            }),
+            0
+          )
+        ]
+      )
+    ]),
+    _vm._v(" "),
+    _c("button", { staticClass: "text-center m-auto btn btn-info" }, [
+      _vm._v("Reserve")
+    ])
   ])
 }
 var staticRenderFns = [
