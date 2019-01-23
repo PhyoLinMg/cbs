@@ -28,7 +28,7 @@
           </ul>
           <ul class="navbar-nav navbar-nav-right">
             <li class="nav-item dropdown">
-              <noti></noti>
+              
             </li>
             <li class="nav-item dropdown d-none d-xl-inline-block">
               <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">

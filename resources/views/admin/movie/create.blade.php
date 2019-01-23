@@ -52,7 +52,7 @@
               </div>
               <div class="form-group">
                 <label for="room">Room</label>
-                <select style="border: solid black 0.1px;" class="form-control" name="room" id="">
+               <select style="border: solid black 0.1px;" class="form-control" name="room" id="types1">
                       @foreach($rooms as $room)
                       <option value="{{$room->id}}">{{$room->name}}</option>
                       @endforeach
@@ -133,6 +133,8 @@
   $(document).ready(function() {
     $('#types').select2();
   });
+
+  
   
 </script>
 

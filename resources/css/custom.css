@@ -33,6 +33,13 @@ div.dt-buttons {
 	background: red;
 
 }
+
+.colorblack{
+	width: 25px;
+	height: 25px;
+	background: black;
+
+}
 .info{
 	display: flex;
 	align-content: center;

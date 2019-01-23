@@ -56,6 +56,7 @@ class MovieController extends Controller
 
         $movie->types()->attach($request->types);
         $movie->save();
+        return redirect('/movie');
     }
 
     /**
