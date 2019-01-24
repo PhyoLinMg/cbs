@@ -14,6 +14,11 @@ class MovieController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+    public function __construct(){
+        $this->middleware(['auth','role:admin']);
+    }
     public function index()
     {
         //
@@ -81,7 +86,8 @@ class MovieController extends Controller
         //
         $rooms=Room::get();
         $movie=Movie::find($id);
-        return view('admin.movie.edit',compact('movie','rooms'));
+        $movietype=Movietype::get()->pluck('name','id');
+        return view('admin.movie.edit',compact('movie','rooms','movietype'));
     }
 
     /**
@@ -98,7 +104,7 @@ class MovieController extends Controller
         $movie->descrption=$request->description;
         $movie->startdate=$request->startdate;
         $movie->enddate=$request->enddate;
-        $movie->room=$request->room;
+        $movie->room_id=$request->room;
         $movie->save();
 
     }

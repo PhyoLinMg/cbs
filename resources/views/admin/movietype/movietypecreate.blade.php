@@ -1,5 +1,10 @@
 @extends('layouts.adminmaster')
 
+@section('title')
+<title>Create Movie Type</title>
+@endsection
+
+@include('admin.header')
 @section('content')
 
 <div class="container">
@@ -12,12 +17,12 @@
 						<label for="name">Type of Movie</label>
 
 						@if($errors->has("name"))
-						<input name="name" type="text" class="form-control is-invalid" id="name" aria-describedby="textHelp" placeholder="Category Name" value="{{ old('name') }}">
+						<input name="name" type="text" class="form-control is-invalid" id="name" aria-describedby="textHelp" placeholder="Movie Type" value="{{ old('name') }}">
 						<div class="invalid-feedback">
 							{{ $errors->first("name") }}
 						</div>
 						@else
-						<input name="name" type="text" class="form-control" id="name" aria-describedby="textHelp" placeholder="Category Name" value="{{ old('name') }}">
+						<input name="name" type="text" class="form-control" id="name" aria-describedby="textHelp" placeholder="Movie Type" value="{{ old('name') }}">
 
 						@endif
 

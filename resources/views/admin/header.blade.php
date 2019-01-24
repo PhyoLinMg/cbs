@@ -113,9 +113,9 @@
             </li>
             
             <li class="nav-item">
-              <a class="nav-link" href="{{route('movie.index')}}">
+              <a class="nav-link" href="{{route('movietype.index')}}">
                 <i class="menu-icon mdi mdi-table"></i>
-                <span class="menu-title">Movie</span>
+                <span class="menu-title">Movie Types</span>
               </a>
             </li>
            

@@ -8,14 +8,9 @@
         </div>
 
 
-
-
         <div class=" mt-5" style="margin-left: 5px">    
 
             <div v-for="(row,index) in rows" class="row mt-1">
-
-
-
 
                 <div style="display: flex" class=" mr-auto">
                     <span   :key="i" v-for='(l,i) in lseats'  :title="row+'-'+l">
@@ -27,7 +22,6 @@
                          class=" colorgreen ml-1 "></div>
                     </span>
                     
-
                 </div>
 
                 <div style="display: flex" class=" ml-auto">
@@ -39,44 +33,15 @@
                          :title="row+'-'+r"></div>
                     </span>
                     
-
                 </div>
-
-
-
-
-
-
-                
-
-
 
             </div>
 
         </div>
 
-        
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
     </div>
 
  
-
-
-
-
 
 </div>
  <button class="text-center m-auto btn btn-info">Reserve</button>

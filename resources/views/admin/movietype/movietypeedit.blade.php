@@ -1,5 +1,8 @@
 @extends('layouts.adminmaster')
-
+@section('title')
+<title>Edit Movie Type</title>
+@endsection
+@include('admin.header')
 @section('content')
 
 <div class="container">

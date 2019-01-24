@@ -44,6 +44,7 @@
 								<label for="enddate">End Date</label>
 								<input type="date" id="enddate" name="enddate">
 							</div>
+
 							<div class="form-group">
 								<label for="description">Description</label>
 								@if($errors->has('quantity'))
@@ -66,4 +67,12 @@
 		</div>
 	</div>
 </div>
+@endsection
+
+@section("script")
+<script>  
+	$(document).ready(function() {
+		$('#types').select2();
+	});
+</script>
 @endsection
