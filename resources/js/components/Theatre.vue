@@ -8,6 +8,8 @@
         </div>
 
 
+
+
         <div class=" mt-5" style="margin-left: 5px">    
 
             <div v-for="(row,index) in rows" class="row justify-content-center mt-1">
@@ -15,7 +17,6 @@
         
                     <span  :key="i" v-for='(r,i) in seats'  :title="row+'-'+r">
 
-<<<<<<< HEAD
 
 
                         <template v-if="check(row,r)" >
@@ -27,23 +28,6 @@
                         <template v-else >
                         <div
                         @mouseenter="hover" 
-=======
-                <div style="display: flex" class=" mr-auto">
-                    <span   :key="i" v-for='(l,i) in lseats'  :title="row+'-'+l">
-                        <div  
-                        @mouseenter="hover" 
-                        @mouseleave="nothover" 
-                        @click="click(index,i,$event)" 
-                         :title="row+'-'+l"  
-                         class=" colorgreen ml-1 "></div>
-                    </span>
-                    
-                </div>
-
-                <div style="display: flex" class=" ml-auto">
-                    <span  :key="i" v-for='(r,i) in rseats'  :title="row+'-'+r">
-                        <div   @mouseenter="hover" 
->>>>>>> c3fdb4916e61adff16c7d9db61825a7750e9520a
                         @mouseleave="nothover"
                         @click="click(index,i,$event)"
                         class=" ml-1 colorgreen  "
@@ -53,17 +37,21 @@
 
                     </span>
                     
-<<<<<<< HEAD
 
-=======
-                </div>
->>>>>>> c3fdb4916e61adff16c7d9db61825a7750e9520a
+
+
+
+
+
+
+                
+
+
 
             </div>
 
         </div>
 
-<<<<<<< HEAD
         
 
 
@@ -79,9 +67,11 @@
 
 
 
-=======
->>>>>>> c3fdb4916e61adff16c7d9db61825a7750e9520a
     </div>
+
+
+
+
 
 
 
@@ -109,16 +99,13 @@
             }   
         },
         methods:{
-
             hover(event){
-
                event.target.classList.toggle("hover")
            },
            nothover(){
             event.target.classList.toggle("hover")
         },
         click(index,i,event){
-
             var cc=-1
             if (!event.target.classList.contains('colorblack')) {
               var  name=event.target.getAttribute('title')
@@ -129,7 +116,6 @@
                 'name':name
             })
               console.log(this.reserve)
-
           }
           else{
             this.reserve.forEach(function(r1){
@@ -141,11 +127,7 @@
             this.reserve.splice(cc,1)
             event.target.classList.toggle("colorblack")
             console.log(this.reserved)
-
         }
-
-
-
         
     },
 check(row,r){
@@ -158,24 +140,18 @@ check(row,r){
             console.log(rs.name)
            a= true
            }
-
         
     })
     return a
-
 }
 },
 computed:{
-
 }
-
 }
 </script>
 
 <style lang="scss">
-
 .hover{
  background-color:grey;
 }
-
 </style>
