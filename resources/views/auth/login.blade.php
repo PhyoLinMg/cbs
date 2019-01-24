@@ -1,4 +1,7 @@
 @extends('layouts.adminmaster')
+@section('title')
+<title>Login</title>
+@endsection
 
 @section('content')
 <body class="app flex-row align-items-center">

@@ -12,6 +12,9 @@ class MovieTypeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct(){
+        $this->middleware(['auth','role:admin']);
+    }
     public function index()
     {
         $movies = Movietype::get();

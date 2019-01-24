@@ -1,6 +1,6 @@
 @extends('layouts.adminmaster')
 @section('title')
-<title>Movie Type</title>
+<title>Movie</title>
 @endsection
 
 @section('content')
