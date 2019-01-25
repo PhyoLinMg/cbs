@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jan 20, 2019 at 01:27 PM
+-- Generation Time: Jan 25, 2019 at 12:04 PM
 -- Server version: 5.7.24-0ubuntu0.18.04.1
 -- PHP Version: 7.2.10-0ubuntu0.18.04.1
 
@@ -54,6 +54,37 @@ CREATE TABLE `customers` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `media`
+--
+
+CREATE TABLE `media` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `model_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `model_id` bigint(20) UNSIGNED NOT NULL,
+  `collection_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `file_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mime_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `disk` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `size` int(10) UNSIGNED NOT NULL,
+  `manipulations` json NOT NULL,
+  `custom_properties` json NOT NULL,
+  `responsive_images` json NOT NULL,
+  `order_column` int(10) UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `media`
+--
+
+INSERT INTO `media` (`id`, `model_type`, `model_id`, `collection_name`, `name`, `file_name`, `mime_type`, `disk`, `size`, `manipulations`, `custom_properties`, `responsive_images`, `order_column`, `created_at`, `updated_at`) VALUES
+(1, 'App\\Movie', 1, 'default', 'IMG_20160929_151033', 'IMG_20160929_151033.jpg', 'image/jpeg', 'public', 225120, '[]', '[]', '[]', 1, '2019-01-22 07:23:22', '2019-01-22 07:23:22');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `migrations`
 --
 
@@ -68,16 +99,17 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(20, '2019_01_16_123622_create_admins_table', 1),
-(30, '2014_10_12_000000_create_users_table', 2),
-(31, '2014_10_12_100000_create_password_resets_table', 2),
-(32, '2019_01_16_122655_create_bookings_table', 2),
-(33, '2019_01_16_122710_create_customers_table', 2),
-(34, '2019_01_16_122723_create_movietypes_table', 2),
-(35, '2019_01_16_122746_create_movies_table', 2),
-(36, '2019_01_16_122755_create_rooms_table', 2),
-(37, '2019_01_16_122812_create_seattypes_table', 2),
-(38, '2019_01_16_122823_create_tmpseats_table', 2);
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_resets_table', 1),
+(3, '2019_01_16_122655_create_bookings_table', 1),
+(4, '2019_01_16_122710_create_customers_table', 1),
+(5, '2019_01_16_122723_create_movietypes_table', 1),
+(6, '2019_01_16_122746_create_movies_table', 1),
+(7, '2019_01_16_122755_create_rooms_table', 1),
+(8, '2019_01_16_122812_create_seattypes_table', 1),
+(9, '2019_01_16_122823_create_tmpseats_table', 1),
+(10, '2019_01_22_025919_create_movie_movietype_table', 1),
+(11, '2019_01_22_093215_create_media_table', 1);
 
 -- --------------------------------------------------------
 
@@ -88,7 +120,6 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 CREATE TABLE `movies` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `movie_type_id` int(11) NOT NULL,
   `room_id` int(11) NOT NULL,
   `descrption` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `startdate` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -101,8 +132,8 @@ CREATE TABLE `movies` (
 -- Dumping data for table `movies`
 --
 
-INSERT INTO `movies` (`id`, `name`, `movie_type_id`, `room_id`, `descrption`, `startdate`, `enddate`, `created_at`, `updated_at`) VALUES
-(1, 'Avengers:End Game', 2, 1, 'The avenger\'s end game', '', '', NULL, NULL);
+INSERT INTO `movies` (`id`, `name`, `room_id`, `descrption`, `startdate`, `enddate`, `created_at`, `updated_at`) VALUES
+(1, 'Avenger\'s End Game', 1, 'End game of Avengers', '2019-01-01', '2019-01-22', '2019-01-22 07:23:22', '2019-01-24 08:05:58');
 
 -- --------------------------------------------------------
 
@@ -122,9 +153,29 @@ CREATE TABLE `movietypes` (
 --
 
 INSERT INTO `movietypes` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'Action', NULL, NULL),
-(2, 'Adventure', NULL, NULL),
-(3, 'Romance', NULL, NULL);
+(1, 'Action', '2019-01-22 07:21:49', '2019-01-22 07:21:49'),
+(2, 'Romance', '2019-01-24 08:01:36', '2019-01-24 08:01:36');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `movie_movietype`
+--
+
+CREATE TABLE `movie_movietype` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `movie_id` int(11) NOT NULL,
+  `movietype_id` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `movie_movietype`
+--
+
+INSERT INTO `movie_movietype` (`id`, `movie_id`, `movietype_id`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -151,6 +202,13 @@ CREATE TABLE `rooms` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `rooms`
+--
+
+INSERT INTO `rooms` (`id`, `name`, `total_rows`, `created_at`, `updated_at`) VALUES
+(1, 'thiha', 12324, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -209,7 +267,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `phone`, `dob`, `gender`, `role`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'asfa', 'linmg@gmail.com', NULL, '$2y$10$19LwM3dP4usgi9L9OmF5EukRAg9G9nHcUtfodzMgYEhgVI0dAeMaC', '81350460984361', '2019-01-23', 'male', 'admin', 'faVp8GDMG1Zp1l9QJny7XsHAvYTX3iWSrjX98lxatp0GcA34g1xBpyTKqjqB', '2019-01-17 07:17:37', '2019-01-17 07:17:37');
+(1, 'admin', 'admin@gmail.com', NULL, '$2y$10$LpziJgbmBaq2BbN8p43nUOFdb/mjBdmE2XJ1YUu9FP1YmhOnFR4IG', '43516084', '2019-01-08', 'male', 'admin', 'NSSGmxxgrfizY2yzmDFRQKjAPG0oUu0RmU7Qvlmta6s0QUI9eDp2uFJKZcIS', '2019-01-22 07:22:53', '2019-01-22 07:22:53');
 
 --
 -- Indexes for dumped tables
@@ -228,6 +286,13 @@ ALTER TABLE `customers`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `media`
+--
+ALTER TABLE `media`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `media_model_type_model_id_index` (`model_type`,`model_id`);
+
+--
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
@@ -243,6 +308,12 @@ ALTER TABLE `movies`
 -- Indexes for table `movietypes`
 --
 ALTER TABLE `movietypes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `movie_movietype`
+--
+ALTER TABLE `movie_movietype`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -291,10 +362,15 @@ ALTER TABLE `bookings`
 ALTER TABLE `customers`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `media`
+--
+ALTER TABLE `media`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `movies`
 --
@@ -304,12 +380,17 @@ ALTER TABLE `movies`
 -- AUTO_INCREMENT for table `movietypes`
 --
 ALTER TABLE `movietypes`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `movie_movietype`
+--
+ALTER TABLE `movie_movietype`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `rooms`
 --
 ALTER TABLE `rooms`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `seattypes`
 --
