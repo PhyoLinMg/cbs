@@ -1813,15 +1813,61 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       enter: false,
       rows: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'],
-      lseats: [1, 2, 3, 4, 5],
-      rseats: [6, 7, 8, 9, 10],
+      seats: [1, 2, 3, 4, 5, 6, 7, 8],
       reserve: [],
-      count: 0
+      reserved: [{
+        cindex: 0,
+        name: "E-6",
+        rindex: 4
+      }, {
+        cindex: 2,
+        name: "G-8",
+        rindex: 2
+      }, {
+        cindex: 2,
+        name: "F-6",
+        rindex: 5
+      }]
     };
   },
   methods: {
@@ -1843,7 +1889,6 @@ __webpack_require__.r(__webpack_exports__);
           'name': name
         });
         console.log(this.reserve);
-        this.count = 1;
       } else {
         this.reserve.forEach(function (r1) {
           if (r1.name == name) {
@@ -1854,11 +1899,22 @@ __webpack_require__.r(__webpack_exports__);
         });
         this.reserve.splice(cc, 1);
         event.target.classList.toggle("colorblack");
-        console.log(this.reserve);
-        this.count = 0;
+        console.log(this.reserved);
       }
+    },
+    check: function check(row, r) {
+      var nn = row + '-' + r;
+      var a = false;
+      this.reserved.forEach(function (rs) {
+        if (rs.name === nn) {
+          console.log(rs.name);
+          a = true;
+        }
+      });
+      return a;
     }
-  }
+  },
+  computed: {}
 });
 
 /***/ }),
@@ -37356,12 +37412,12 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", {}, [
-    _c("div", { staticClass: "row justify-content-center mt-5" }, [
+    _c("div", { staticClass: "   row justify-content-center mt-5" }, [
       _c(
         "div",
         {
           staticClass:
-            " justify-content-center col-8 col-sm-8 col-md-6 col-lg-5 col-xl-4 theatre"
+            "align-items-center justify-content-center col-8 col-sm-8 col-md-6 col-lg-5 col-xl-4 theatre"
         },
         [
           _vm._m(0),
@@ -37370,57 +37426,40 @@ var render = function() {
             "div",
             { staticClass: " mt-5", staticStyle: { "margin-left": "5px" } },
             _vm._l(_vm.rows, function(row, index) {
-              return _c("div", { staticClass: "row mt-1" }, [
-                _c(
-                  "div",
-                  { staticClass: " mr-auto", staticStyle: { display: "flex" } },
-                  _vm._l(_vm.lseats, function(l, i) {
-                    return _c(
-                      "span",
-                      { key: i, attrs: { title: row + "-" + l } },
-                      [
-                        _c("div", {
-                          staticClass: " colorgreen ml-1 ",
-                          attrs: { title: row + "-" + l },
-                          on: {
-                            mouseenter: _vm.hover,
-                            mouseleave: _vm.nothover,
-                            click: function($event) {
-                              _vm.click(index, i, $event)
-                            }
-                          }
-                        })
-                      ]
-                    )
-                  }),
-                  0
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: " ml-auto", staticStyle: { display: "flex" } },
-                  _vm._l(_vm.rseats, function(r, i) {
-                    return _c(
-                      "span",
-                      { key: i, attrs: { title: row + "-" + r } },
-                      [
-                        _c("div", {
-                          staticClass: " colorgreen ml-1 ",
-                          attrs: { title: row + "-" + r },
-                          on: {
-                            mouseenter: _vm.hover,
-                            mouseleave: _vm.nothover,
-                            click: function($event) {
-                              _vm.click(index, i, $event)
-                            }
-                          }
-                        })
-                      ]
-                    )
-                  }),
-                  0
-                )
-              ])
+              return _c(
+                "div",
+                { staticClass: "row justify-content-center mt-1" },
+                _vm._l(_vm.seats, function(r, i) {
+                  return _c(
+                    "span",
+                    { key: i, attrs: { title: row + "-" + r } },
+                    [
+                      _vm.check(row, r)
+                        ? [
+                            _c("div", {
+                              staticClass: " ml-1 colorred  ",
+                              attrs: { title: row + "-" + r }
+                            })
+                          ]
+                        : [
+                            _c("div", {
+                              staticClass: " ml-1 colorgreen  ",
+                              attrs: { title: row + "-" + r },
+                              on: {
+                                mouseenter: _vm.hover,
+                                mouseleave: _vm.nothover,
+                                click: function($event) {
+                                  _vm.click(index, i, $event)
+                                }
+                              }
+                            })
+                          ]
+                    ],
+                    2
+                  )
+                }),
+                0
+              )
             }),
             0
           )
@@ -37428,9 +37467,7 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c("button", { staticClass: "text-center m-auto btn btn-info" }, [
-      _vm._v("Reserve")
-    ])
+    _vm._m(1)
   ])
 }
 var staticRenderFns = [
@@ -37440,6 +37477,16 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "screen m-auto mb-5" }, [
       _c("p", { staticClass: " text-center" }, [_vm._v("screen")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row mt-2 justify-content-center" }, [
+      _c("button", { staticClass: " text-center btn btn-info" }, [
+        _vm._v("Reserve")
+      ])
     ])
   }
 ]
@@ -48907,8 +48954,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/linmg/will delet/cbs/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/linmg/will delet/cbs/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/pkk/cbs/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/pkk/cbs/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
