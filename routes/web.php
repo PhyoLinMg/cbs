@@ -21,6 +21,8 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('/booking','HomeController@booking')->name('booking');
 Route::get('/layout','HomeController@layout')->name('layout');
 Route::get('/customer','HomeController@customer');
+Route::get('/movie/detail/{id}',"MovieController@showdetail")->name('showdetail');
+
 
 Route::get('login', 'SingleLoginController@showLoginForm')->name('login');
 Route::post('login', 'SingleLoginController@login');

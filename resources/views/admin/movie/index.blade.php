@@ -32,7 +32,7 @@
 						</table>
 						{{ $movies->links() }}
 					</div>
-
+				
 				</div>
 			</div>
 		</div>

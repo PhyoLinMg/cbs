@@ -6,15 +6,10 @@ use Illuminate\Http\Request;
 use App\Movie;
 use App\Movietype;
 use App\Room;
+use App\Booking;
 
 class MovieController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
 
     public function __construct(){
         $this->middleware(['auth','role:admin']);
@@ -62,6 +57,12 @@ class MovieController extends Controller
         $movie->types()->attach($request->types);
         $movie->save();
         return redirect('/movie');
+    }
+
+    public function showdetail($id){
+        $movie=Movie::findOrFail($id);
+        $bookings=Booking::where('movie_id',$id)->get();
+        return view('admin.movie.moviedetail',compact('bookings','movie'));
     }
 
     /**

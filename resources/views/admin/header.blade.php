@@ -32,7 +32,9 @@
             </li>
             <li class="nav-item dropdown d-none d-xl-inline-block">
               <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                <span class="profile-text">Hello, {{ \Auth::user()->name }} !</span>
+                @if(\Auth::Check())
+                  <span class="profile-text">Hello, {{ \Auth::user()->name }} !</span>
+                @endif
                 <img class="img-xs rounded-circle" src="../../images/faces/face1.jpg" alt="Profile image">
               </a>
               <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
@@ -92,7 +94,7 @@
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="">
+              <a class="nav-link" href="{{ route('admin.index') }}">
                 <i class="menu-icon mdi mdi-television"></i>
                 <span class="menu-title">Dashboard</span>
               </a>

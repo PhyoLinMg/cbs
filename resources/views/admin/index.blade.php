@@ -24,7 +24,7 @@
 						<div class="list-group">
 
 							@foreach($movies as $movie)
-								<a href="#" class="list-group-item list-group-item-action">
+								<a href="{{ route('showdetail',$movie->id) }}" class="list-group-item list-group-item-action">
 								{{$movie->name}}
 							</a>
 							@endforeach
