@@ -28,6 +28,6 @@ class CreateMovieMovietypeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('movies_movietypes');
+        Schema::dropIfExists('movie_movietype');
     }
 }

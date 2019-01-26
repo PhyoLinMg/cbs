@@ -42,10 +42,11 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $time=$request->hour.":".$request->minute." ".$request->amorpm;
         $movie=Movie::create([
             'name'=>$request->name,
             'room_id'=>$request->room,
+            'time'=>$time,
             'descrption'=>$request->description,
             'startdate'=>$request->startdate,
             'enddate'=>$request->enddate
@@ -62,7 +63,10 @@ class MovieController extends Controller
     public function showdetail($id){
         $movie=Movie::findOrFail($id);
         $bookings=Booking::where('movie_id',$id)->get();
-        return view('admin.movie.moviedetail',compact('bookings','movie'));
+        $times=Booking::select('movie_time')->distinct()->get();
+        
+
+        return view('admin.movie.moviedetail',compact('bookings','movie','times'));
     }
 
     /**

@@ -18,6 +18,7 @@ class CreateMoviesTable extends Migration
             $table->string('name');
             $table->integer('room_id');
             $table->string('descrption');
+            $table->string('time');
             $table->string('startdate');
             $table->string('enddate');
             $table->timestamps();

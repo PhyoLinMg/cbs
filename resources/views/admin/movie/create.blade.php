@@ -6,24 +6,7 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/basic.css" rel="stylesheet" type="text/css" />
 
 <title>Admin Panel</title>
-<style type="text/css">
-.dropzone {
-  border:2px dashed #999999;
-  border-radius: 10px;
-}
-.dropzone .dz-default.dz-message {
-  height: 171px;
-  background-size: 132px 132px;
-  margin-top: -101.5px;
-  background-position-x:center;
-}
-.dropzone .dz-default.dz-message span {
-  display: block;
-  margin-top: 145px;
-  font-size: 20px;
-  text-align: center;
-}
-</style>
+
 @endsection
 
 @section("content")
@@ -59,6 +42,53 @@
                 </select>
 
               </div>
+              <div class="form-group">
+                    <label class="text-white" for="time">Start Time</label>
+                    <div class="input-group d-flex align-items-center" id="time">
+                      <div class="pr-2">
+                        <select style="border: solid black 0.1px;" class="form-control" name="hour" id="" >
+                          @for($i=1;$i<=12;$i++)
+                          @if($i<10)
+                          <option value="0{{$i}}">0{{$i}}</option>
+
+                          {{-- 0 ka br lo htae htr tr ll? --}}
+
+                          @else
+                          <option value="{{$i}}">{{$i}}</option>
+                          @endif
+                          @endfor
+                        </select>
+                      </div>
+
+                      <div class="pr-3"><span class="text-black">Hour </span></div>
+                      
+                      <div class="pr-2">
+                        <select style="border: solid black 0.1px;" class="form-control" name="minute" id="" >
+                          @for($i=0;$i<=59;$i++)
+                          @if($i<10)
+                          <option value="0{{$i}}">0{{$i}}</option>
+                          @else
+                          <option value="{{$i}}">{{$i}}</option>
+                          @endif
+                          @endfor
+                        </select>
+
+                      </div>
+
+                      <div class="pr-3"><span class="text-black">Minute </span></div>
+
+                      
+                      
+                      <div class="pr-2">
+                        <select  style="border: solid black 0.1px;" class="form-control" name="amorpm" id=""  >
+                          <option value="am">AM</option>
+                          <option value="pm">PM</option>
+                        </select>
+                      </div>
+                      
+                    </div>
+                  </div>
+
 
               <div class="form-group">
                  <input id="avatar" type="file" class="form-control" name="avatar">
