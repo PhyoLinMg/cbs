@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class HomeController extends Controller
 {
@@ -28,8 +29,12 @@ class HomeController extends Controller
     public function booking(){
         return view('all.booking');
     }
-    public function layout(){
+    public function pdfdownload(){
+       $pdf = PDF::loadView('pdf');
+       return $pdf->download('test.pdf');
+   }
+   public function layout(){
 
-    }
+   }
 
 }

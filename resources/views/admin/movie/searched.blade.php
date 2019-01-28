@@ -127,20 +127,15 @@ h5{
 				<div class="card-body pb-2">
 					<h5 class="card-title text-center">{{ $p->name}}</h5>
 					<p class="text-center">Description: {{$p->descrption}} </p>
-							{{-- <div class="p-2">
-								<a href="{{route('product.vote',['id'=>$p->id])}}" class="btn btn-success">Vote</a>
-							</div> --}}
-							
-
 						</div>
 					</div>
-					
+
 				</div>
 				@endforeach
 				@else
 				<div>
-					<h2 class="text-white">Movie Not found</h2>
-					<p class="text-white">There are many movie <a href="">here</a></p>
+					<h2 class="">Movie Not found</h2>
+					<p class="">There are many movie <a href="">here</a></p>
 				</div>
 				@endif
 			</div>
