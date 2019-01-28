@@ -22,6 +22,7 @@ Route::get('/booking','HomeController@booking')->name('booking');
 Route::get('/layout','HomeController@layout')->name('layout');
 Route::get('/customer','HomeController@customer');
 Route::get('/movie/detail/{id}',"MovieController@showdetail")->name('showdetail');
+Route::get('/search',"SearchController@search")->name('search');
 
 
 Route::get('login', 'SingleLoginController@showLoginForm')->name('login');
