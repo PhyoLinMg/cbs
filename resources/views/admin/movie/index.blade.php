@@ -18,6 +18,7 @@
 									<td>ID</td>
 									<td>Name</td>
 									<td></td>
+									<td></td>
 								</tr>	
 							</thead>
 							<tbody>
@@ -26,6 +27,12 @@
 									<td>{{$movie->id}}</td>
 									<td>{{$movie->name}}</td>
 									<td><a href="{{route('movie.edit',$movie->id)}}" class="btn btn-success">Edit</a></td>
+									<td><form action="{{ route("movie.destroy", $movie->id) }}"
+										method="post">
+										{{ csrf_field() }}
+										<input type="hidden" name="_method" value="delete">
+										<button class="btn btn-danger" type="submit">Delete</button>
+									</form></td>
 								</tr>
 								@endforeach
 							</tbody>

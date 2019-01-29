@@ -84,9 +84,15 @@
                     <img src="../../images/faces/face1.jpg" alt="profile image">
                   </div>
                   <div class="text-wrapper">
-                    <p class="profile-name">{{ \Auth::user()->name }}</p>
+                    @if(\Auth::Check())
+                  <p class="profile-name">{{ \Auth::user()->name }}</p>
+                @endif
+                    
                     <div>
-                      <small class="designation text-muted">{{\Auth::user()->role}}</small>
+                       @if(\Auth::Check())
+                  <small class="designation text-muted">{{\Auth::user()->role}}</small>
+                @endif
+                     
                       <span class="status-indicator online"></span>
                     </div>
                   </div>

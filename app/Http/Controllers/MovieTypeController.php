@@ -18,7 +18,7 @@ class MovieTypeController extends Controller
     public function index()
     {
         $movies = Movietype::get();
-        return view('admin.movie.movietypeindex', compact('movies'));
+        return view('admin.movietype.movietypeindex', compact('movies'));
     }
 
     /**
@@ -28,7 +28,7 @@ class MovieTypeController extends Controller
      */
     public function create()
     {
-        return view('admin.movie.movietypecreate');
+        return view('admin.movietype.movietypecreate');
     }
 
     /**
@@ -67,7 +67,7 @@ class MovieTypeController extends Controller
     public function edit($id)
     {
         $movietype = Movietype::find($id);
-        return view('admin.movie.movietypeedit',compact('movietype'));
+        return view('admin.movietype.movietypeedit',compact('movietype'));
     }
 
     /**
@@ -95,6 +95,6 @@ class MovieTypeController extends Controller
     {
         $movietype = Movietype::find($id);
         $movietype->delete();
-        return redirect()->route('movie.index');
+        return redirect()->route('movietype.index');
     }
 }

@@ -16,7 +16,6 @@ class Role
      */
     public function handle($request, Closure $next,$role)
     {
-
         if (\Auth::check()) {
 
             if (\Auth::user()->role==null) {

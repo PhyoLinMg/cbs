@@ -63,7 +63,8 @@ class MovieController extends Controller
     public function showdetail($id){
         $movie=Movie::findOrFail($id);
         $bookings=Booking::where('movie_id',$id)->get();
-        $times=Booking::select('movie_time')->distinct()->get();
+        $times=Booking::select('movie_time')->where('movie_id',$id)->distinct()->get();
+
         
 
         return view('admin.movie.moviedetail',compact('bookings','movie','times'));
@@ -122,6 +123,8 @@ class MovieController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $movie = Movie::find($id);
+        $movie->delete();
+        return redirect()->route('movie.index');
     }
 }

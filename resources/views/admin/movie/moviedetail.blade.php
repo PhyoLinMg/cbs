@@ -52,7 +52,7 @@
 								</div>
 							</div> --}}
 							<div class="container-fluid">
-								<h3>Scrollspy with List Group</h3>
+								<h3>Movie Booking</h3>
 								<hr>
 								<div class="row">
 									<div class="col-4">
