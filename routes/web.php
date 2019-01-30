@@ -19,6 +19,12 @@ Route::get('/', function () {
 
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('/booking','HomeController@booking')->name('booking');
+
+
+Route::get('/theatre/{id}','HomeController@theatre')->name('booking');
+
+
+
 Route::get('/booking/pdf',"HomeController@pdfdownload")->name('pdfdownload');
 Route::get('/layout','HomeController@layout')->name('layout');
 Route::get('movie/timecheck',"MovieController@timechecking")->name('timechecking');

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade as PDF;
+use App\Movie;
+
 
 class HomeController extends Controller
 {
@@ -27,8 +29,27 @@ class HomeController extends Controller
         return view('home');
     }
     public function booking(){
-        return view('all.booking');
+
+        $date=date("Y-m-d");
+
+        $movies=Movie::whereDate('enddate', '>=', date('Y-m-d'))
+        ->get();
+
+       return view('all.booking1',compact('movies'));
     }
+
+public function theatre($id){
+
+        // $date=date("Y-m-d");
+
+        // $movies=Movie::whereDate('enddate', '>=', date('Y-m-d'))
+        // ->get();
+
+       return view('all.booking');
+    }
+
+
+
     public function pdfdownload(){
        $pdf = PDF::loadView('pdf');
        return $pdf->download('test.pdf');
