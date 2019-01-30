@@ -1848,6 +1848,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1874,7 +1877,7 @@ __webpack_require__.r(__webpack_exports__);
     hover: function hover(event) {
       event.target.classList.toggle("hover");
     },
-    nothover: function nothover() {
+    nothover: function nothover(event) {
       event.target.classList.toggle("hover");
     },
     click: function click(index, i, event) {
@@ -37447,7 +37450,7 @@ var render = function() {
                               attrs: { title: row + "-" + r },
                               on: {
                                 mouseenter: _vm.hover,
-                                mouseleave: _vm.nothover,
+                                mouseout: _vm.nothover,
                                 click: function($event) {
                                   _vm.click(index, i, $event)
                                 }
@@ -48954,8 +48957,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/linmg/will delet/cbs/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/linmg/will delet/cbs/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/pkk/cbs/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/pkk/cbs/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

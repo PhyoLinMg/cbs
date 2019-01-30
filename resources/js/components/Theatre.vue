@@ -1,5 +1,5 @@
 <template>
-   <div class="">
+    <div class="">
     <div class="   row justify-content-center mt-5">
         <div class="align-items-center justify-content-center col-8 col-sm-8 col-md-6 col-lg-5 col-xl-4 theatre" 
         >
@@ -25,10 +25,13 @@
                         :title="row+'-'+r"></div>
                         </template>
 
+
+
+
                         <template v-else >
                         <div
                         @mouseenter="hover" 
-                        @mouseleave="nothover"
+                        @mouseout="nothover"
                         @click="click(index,i,$event)"
                         class=" ml-1 colorgreen  "
                         :title="row+'-'+r"></div>
@@ -100,10 +103,14 @@
         },
         methods:{
             hover(event){
+
                event.target.classList.toggle("hover")
            },
-           nothover(){
-            event.target.classList.toggle("hover")
+           nothover(event){
+                
+              event.target.classList.toggle("hover")
+        
+           
         },
         click(index,i,event){
             var cc=-1
