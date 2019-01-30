@@ -11,7 +11,7 @@
 			<div class="col-md-12 grid-margin stretch-card">
 				<div class="card back-prime">
 					<div class="card-body">
-						<a href="{{ route('movie.create') }}" class="btn btn-primary" style=" padding-bottom: 10px; margin-bottom: 10px;"><i class="mdi mdi-plus"></i>Add movie</a>
+						<a href="{{ route('timechecking') }}" class="btn btn-primary" style=" padding-bottom: 10px; margin-bottom: 10px;"><i class="mdi mdi-plus"></i>Add movie</a>
 						<table class="table table-dark">
 							<thead>
 								<tr>

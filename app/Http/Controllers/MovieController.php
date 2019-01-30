@@ -26,12 +26,35 @@ class MovieController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function timechecking(){
         $rooms=Room::get();
+        return view('admin.movie.timecheck',compact('rooms'));
+    }
+    public function create(Request $request)
+    {
+                
+
+    }
+    public function create1(Request $request)
+    {
+        $movies=Movie::where('room_id',$request->room)->where('startdate',$request->startdate)->get();
+        
+        $rooms=Room::where('id','!=',$request->room)->get();
+
+
         $movietype=Movietype::get()->pluck('name','id');
-        return view('admin.movie.create',compact('rooms','movietype'));
+       
+        if($movies->isNotEmpty()){
+            return redirect('/admin');  
+            //change as u like
+        }
+        else{
+             return view('admin.movie.create',compact('rooms','movietype'));
+        }
+
+    }
+    public function testing(Request $request){
+        return $request;
     }
 
     /**
