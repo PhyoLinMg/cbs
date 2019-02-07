@@ -32,7 +32,7 @@ class HomeController extends Controller
         Booking::create([
             'name'=>$req->name,
              'phno'=>$req->phno,
-           'seats'=>serialize($seats),
+           'seats'=>$seats,
            'mid'=>$req->mid
         ]);
 

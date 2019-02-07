@@ -99,10 +99,10 @@
             </span>
         </div>
         <div class="mb-5">
-            <span class="mr-5">Name:     </span><input class="ml-3" type="text" v-model="name">
+            <span class="mr-5">Name:     </span><input class="ml-3 pxp" type="text" v-model="name">
         </div>
         <div class="mb-5">
-            <span>Phone Number: </span><input type="text" v-model="phno">
+            <span>Phone Number: </span><input class="pxp" type="text" v-model="phno">
         </div>
         
       </div>
@@ -155,7 +155,9 @@
         }
     },
     book1(e){
-         
+
+        if (this.name && this.phno) {
+            
                      axios.post('/savebooking', {
                         name:this.name,
                         phno:this.phno,
@@ -165,7 +167,7 @@
                   .then(function (response) {
                     // window.location="/theatre/1"
                   });
-      
+      }
  
 
     },
@@ -179,7 +181,7 @@
                 'cindex':i,
                 'name':name
             })
-              console.log(this.reserve)
+           
           }
           else{
             this.reserve.forEach(function(r1){
@@ -190,7 +192,7 @@
             })
             this.reserve.splice(cc,1)
             event.target.classList.toggle("colorblack")
-            console.log(this.reserved)
+           
         }
         
     },
@@ -201,7 +203,6 @@ check(row,r){
     this.reserved.forEach(function(rs){
         
            if (rs.name===nn) {
-            console.log(rs.name)
            a= true
            }
         
@@ -214,7 +215,6 @@ mounted(){
     var b=location.pathname
     var a=b.split('/')
     this.id=a[2]
-    console.log(this.id)
 
     
 }
@@ -225,7 +225,8 @@ mounted(){
 .hover{
  background-color:grey;
 }
-.block{
-    display: block;
+.pxp{
+border: solid 1px;
 }
+
 </style>

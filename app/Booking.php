@@ -10,4 +10,8 @@ class Booking extends Model
     protected $fillable = [
         'name','phno','seats','mid'
     ];
+
+    protected $casts=[
+    	'seats'=>'array'
+    ];
 }
