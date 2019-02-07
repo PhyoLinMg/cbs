@@ -21,7 +21,7 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('/booking','HomeController@booking')->name('booking');
 
 
-Route::get('/theatre','HomeController@theatre')->name('booking');
+Route::get('/theatre/{id}','HomeController@theatre')->name('booking');
 
 Route::post('/savebooking','HomeController@savebooking');
 

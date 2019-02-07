@@ -35,8 +35,7 @@ class HomeController extends Controller
             'phno'=>$req->phno,
             'rindex'=>$seat['rindex'],
             'cindex'=>$seat['lindex'],
-            'sname'=>$seat['name'];
-
+            'sname'=>$seat['name']
         ]);
 
         }
