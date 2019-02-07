@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jan 30, 2019 at 12:27 PM
+-- Generation Time: Feb 07, 2019 at 12:38 PM
 -- Server version: 5.7.25-0ubuntu0.18.04.2
 -- PHP Version: 7.2.10-0ubuntu0.18.04.1
 
@@ -89,7 +89,8 @@ CREATE TABLE `media` (
 --
 
 INSERT INTO `media` (`id`, `model_type`, `model_id`, `collection_name`, `name`, `file_name`, `mime_type`, `disk`, `size`, `manipulations`, `custom_properties`, `responsive_images`, `order_column`, `created_at`, `updated_at`) VALUES
-(1, 'App\\Movie', 1, 'default', 'FB_IMG_1509296144460', 'FB_IMG_1509296144460.jpg', 'image/jpeg', 'public', 68193, '[]', '[]', '[]', 1, '2019-01-25 09:39:45', '2019-01-25 09:39:45');
+(1, 'App\\Movie', 1, 'default', 'FB_IMG_1509296144460', 'FB_IMG_1509296144460.jpg', 'image/jpeg', 'public', 68193, '[]', '[]', '[]', 1, '2019-01-25 09:39:45', '2019-01-25 09:39:45'),
+(2, 'App\\Movie', 2, 'default', 'gg', 'gg.jpg', 'image/jpeg', 'public', 69683, '[]', '[]', '[]', 2, '2019-02-07 04:48:20', '2019-02-07 04:48:20');
 
 -- --------------------------------------------------------
 
@@ -143,7 +144,8 @@ CREATE TABLE `movies` (
 --
 
 INSERT INTO `movies` (`id`, `name`, `room_id`, `descrption`, `time`, `startdate`, `enddate`, `created_at`, `updated_at`) VALUES
-(1, 'Avenger\'s End Game', 1, 'The end game of Avengers:End Game', '01:00 am', '2019-01-04', '2019-01-30', '2019-01-25 09:39:45', '2019-01-25 09:39:45');
+(1, 'Avenger\'s End Game', 1, 'The end game of Avengers:End Game', '01:00 am', '2019-01-04', '2019-01-30', '2019-01-25 09:39:45', '2019-01-25 09:39:45'),
+(2, 'Hello world', 2, 'safcas sdfad', '09:09 pm', '2019-02-04', '2019-02-13', '2019-02-07 04:48:19', '2019-02-07 04:48:19');
 
 -- --------------------------------------------------------
 
@@ -186,7 +188,8 @@ CREATE TABLE `movie_movietype` (
 
 INSERT INTO `movie_movietype` (`id`, `movie_id`, `movietype_id`, `created_at`, `updated_at`) VALUES
 (1, 1, 1, NULL, NULL),
-(2, 2, 2, NULL, NULL);
+(2, 2, 2, NULL, NULL),
+(3, 2, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -219,7 +222,8 @@ CREATE TABLE `rooms` (
 --
 
 INSERT INTO `rooms` (`id`, `name`, `total_rows`, `created_at`, `updated_at`) VALUES
-(1, 'Threatre of Dreams\r\n', 123, NULL, NULL);
+(1, 'Threatre of Dreams\r\n', 123, NULL, NULL),
+(2, 'Blah', 1234, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -376,7 +380,7 @@ ALTER TABLE `customers`
 -- AUTO_INCREMENT for table `media`
 --
 ALTER TABLE `media`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `migrations`
 --
@@ -386,7 +390,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `movies`
 --
 ALTER TABLE `movies`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `movietypes`
 --
@@ -396,12 +400,12 @@ ALTER TABLE `movietypes`
 -- AUTO_INCREMENT for table `movie_movietype`
 --
 ALTER TABLE `movie_movietype`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `rooms`
 --
 ALTER TABLE `rooms`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `seattypes`
 --

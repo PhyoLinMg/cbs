@@ -23,67 +23,33 @@
 								<p class="card-text">{{$movie->name}}</p>
 							</div>
 						</div>
-						{{-- scrollspy --}}
-						{{-- <div class="container-fluid">
-							<h3>Bookings</h3>
+						<div class="container-fluid">
+							<h3>Movie Booking</h3>
 							<hr>
 							<div class="row">
-								<div class="col-4">
-									<div class="list-group" id="myScrollspy">
-										@foreach($times as $time)
-										<a class="list-group-item" href="#ident{{$time['movie_time']}}">{{$time['movie_time']}}</a>
+								<table class="table table-striped">
+									<thead>
+										<tr>
+											<td>ID</td>
+											<td>Name</td>
+											<td>Time</td>
+										</tr>
+									</thead>
+									<tbody>
+										@foreach($bookings as $booking)
+											<tr>
+												<td>{{$booking->id}}</td>
+												<td>{{App\User::find($booking->customer_id)->name}}</td>
+												<td>{{$booking->movie_time}}</td>
+											</tr>
 										@endforeach
-									</div>
-								</div>
-								<div class="col-8">
-									<div data-spy="scroll" data-target="#myScrollspy" data-offset="10"
-									style="height:200px;overflow-y: scroll;	padding:5px; border: 1px solid #ccc;">
-									@foreach($times as $time)
-										@php
-										$items=App\Booking::where('movie_time',$time['movie_time'])->get();
-										@endphp
-										@foreach ($items as $item)
-										<h4 id="ident{{$time['movie_time']}}">Movie Time</h4>
-										<p>Movie Time:{{$item->movie_time}}</p>
-										<p>Customer Name:{{\App\User::find($item->customer_id)['name']}}</p>
-										<hr>
-										@endforeach
-									@endforeach
-								</div>
-							</div> --}}
-							<div class="container-fluid">
-								<h3>Movie Booking</h3>
-								<hr>
-								<div class="row">
-									<div class="col-4">
-										<div class="list-group" id="myScrollspy">
-											@foreach($times as $time)
-											<a class="list-group-item" href="#ident{{$time['movie_time']}}">{{$time['movie_time']}}</a>
-											@endforeach
-										</div>
-									</div>
-									<div class="col-8">
-										<div data-spy="scroll" data-target="#myScrollspy" data-offset="10"
-										style="height:200px;overflow-y: scroll;padding:5px; border: 1px solid #ccc;">
-										@foreach($times as $time)
-										@php
-										$items=App\Booking::where('movie_time',$time['movie_time'])->get();
-										@endphp
-										@foreach ($items as $item)
-										<h4 id="ident{{$time['movie_time']}}">Movie Time</h4>
-										<p>Movie Time:{{$item->movie_time}}</p>
-										<p>Customer Name:{{\App\User::find($item->customer_id)['name']}}</p>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo eveniet, quibusdam inventore quo delectus est labore, pariatur repellat quis exercitationem unde qui eligendi. Aut modi harum fugiat, error. Numquam, distinctio.</p>
-										<hr>
-										@endforeach
-									@endforeach
+									</tbody>
+								</table>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
-</div>
-</div>
-@endsection
+	@endsection

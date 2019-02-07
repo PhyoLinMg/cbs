@@ -53,9 +53,7 @@ class MovieController extends Controller
         }
 
     }
-    public function testing(Request $request){
-        return $request;
-    }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -87,8 +85,6 @@ class MovieController extends Controller
         $movie=Movie::findOrFail($id);
         $bookings=Booking::where('movie_id',$id)->get();
         $times=Booking::select('movie_time')->where('movie_id',$id)->distinct()->get();
-
-        
 
         return view('admin.movie.moviedetail',compact('bookings','movie','times'));
     }

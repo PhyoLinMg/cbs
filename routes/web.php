@@ -21,7 +21,7 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('/booking','HomeController@booking')->name('booking');
 
 
-Route::get('/theatre/{id}','HomeController@theatre')->name('booking');
+Route::get('/theatre','HomeController@theatre')->name('booking');
 
 Route::post('/savebooking','HomeController@savebooking');
 
@@ -30,7 +30,7 @@ Route::post('/savebooking','HomeController@savebooking');
 Route::get('/booking/pdf',"HomeController@pdfdownload")->name('pdfdownload');
 Route::get('/layout','HomeController@layout')->name('layout');
 Route::get('movie/timecheck',"MovieController@timechecking")->name('timechecking');
-Route::post('movie/testing',"MovieController@testing")->name('testing');
+
 Route::post('movie/create1',"MovieController@create1")->name('movie.create1');
 Route::get('/customer','HomeController@customer');
 Route::get('/movie/detail/{id}',"MovieController@showdetail")->name('showdetail');
