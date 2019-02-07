@@ -38,7 +38,7 @@ class HomeController extends Controller
        return view('all.booking1',compact('movies'));
     }
 
-public function theatre($id){
+public function theatre(){
 
         // $date=date("Y-m-d");
 
