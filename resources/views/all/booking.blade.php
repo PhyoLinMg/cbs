@@ -5,7 +5,7 @@
 
 @endsection
 @section('content')
-<div class="" id="app">
+<div class="" 	>
 	<link rel="stylesheet" href="{{ asset('css/all.css') }}">
 	<div class="row">
 		<h2 class="col-12 col-md-12 col-lg-12">Make Ur Booking to reserve Seats! </h2>
@@ -31,6 +31,7 @@
 		
 	</div>
  <ex></ex>
+
 </div>
 
 
