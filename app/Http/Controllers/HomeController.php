@@ -7,7 +7,6 @@ use Barryvdh\DomPDF\Facade as PDF;
 use App\Movie;
 use App\Booking;
 
-
 class HomeController extends Controller
 {
     /**
@@ -17,7 +16,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     /**
@@ -28,17 +27,20 @@ class HomeController extends Controller
 
 
     public function savebooking(Request $req){
-        dd($req);
-        foreach ($seats as $seat) {
-            Booking::create([
+        $seats=$req->seats;
+       // $group=\DB::table('bookings')->select('group')->latest()->first();
+        Booking::create([
             'name'=>$req->name,
-            'phno'=>$req->phno,
-            'rindex'=>$seat['rindex'],
-            'cindex'=>$seat['lindex'],
-            'sname'=>$seat['name']
+             'phno'=>$req->phno,
+           'seats'=>serialize($seats),
+           'mid'=>$req->mid
         ]);
 
-        }
+        // \DB::table('bookingtest')->insert([
+        //     
+        // ]);
+        
+        
     }
     public function index()
     {
@@ -51,27 +53,27 @@ class HomeController extends Controller
         $movies=Movie::whereDate('enddate', '>=', date('Y-m-d'))
         ->get();
 
-       return view('all.booking1',compact('movies'));
+        return view('all.booking1',compact('movies'));
     }
 
-public function theatre(){
+    public function theatre(){
 
         // $date=date("Y-m-d");
 
         // $movies=Movie::whereDate('enddate', '>=', date('Y-m-d'))
         // ->get();
 
-       return view('all.booking');
-    }
+     return view('all.booking');
+ }
 
 
 
-    public function pdfdownload(){
-       $pdf = PDF::loadView('pdf');
-       return $pdf->download('test.pdf');
-   }
-   public function layout(){
+ public function pdfdownload(){
+     $pdf = PDF::loadView('pdf');
+     return $pdf->download('test.pdf');
+ }
+ public function layout(){
 
-   }
+ }
 
 }

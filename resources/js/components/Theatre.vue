@@ -159,7 +159,8 @@
                      axios.post('/savebooking', {
                         name:this.name,
                         phno:this.phno,
-                        seats:this.reserve
+                        seats:this.reserve,
+                        mid:this.id
                   })
                   .then(function (response) {
                     // window.location="/theatre/1"
