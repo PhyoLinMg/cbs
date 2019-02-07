@@ -79,10 +79,37 @@
 
 
 </div>
-<div  class="row mt-2 justify-content-center">
-   <button class=" text-center btn btn-info">Reserve</button>
-</div>
 
+<div  class="row mt-2 justify-content-center">
+        <b-button  class=" text-center btn btn-info" @click="book()">
+        Reserve
+    </b-button>
+   
+</div>
+<div>
+
+    <b-modal v-model="modalShow" hide-footer title="Your Information">
+      <div class="d-block text-center">
+        <div class="mb-5">
+            <span class="mr-5 ">Your seats :</span>
+
+            <span v-for="(item,index) in reserve">
+                <template v-if="(index+1)==reserve.length"> {{ item.name }}</template>
+               <template v-else> {{ item.name }},</template>
+            </span>
+        </div>
+        <div class="mb-5">
+            <span class="mr-5">Name:     </span><input class="ml-3" type="text" v-model="name">
+        </div>
+        <div class="mb-5">
+            <span>Phone Number: </span><input type="text" v-model="phno">
+        </div>
+        
+      </div>
+      <b-btn class="mt-3" variant="outline-danger" block @click="book1()">Close Me</b-btn>
+    </b-modal>
+ 
+</div>
 </div>
 </template>
 
@@ -90,7 +117,12 @@
     export default {
        data(){
         return{
+            name:null,
+            modalShow: false,
+            phno:null,
+            id:null,
             enter:false,
+            tof:false,
             rows:['A','B','C','D','E','F','G','H','I'],
             seats:[1,2,3,4,5,6,7,8],
             reserve:[],
@@ -112,6 +144,30 @@
         
            
         },
+        book(event){
+            if (this.reserve.length!=0) {
+            this. modalShow=!this.modalShow
+
+
+        }
+        else{
+            alert('U have to select at least one seat to be reserved')
+        }
+    },
+    book1(e){
+         
+                     axios.post('/savebooking', {
+                        name:this.name,
+                        phno:this.phno,
+                        seats:this.reserve
+                  })
+                  .then(function (response) {
+                    // window.location="/theatre/1"
+                  });
+      
+ 
+
+    },
         click(index,i,event){
             var cc=-1
             if (!event.target.classList.contains('colorblack')) {
@@ -152,7 +208,14 @@ check(row,r){
     return a
 }
 },
-computed:{
+
+mounted(){
+    var b=location.pathname
+    var a=b.split('/')
+    this.id=a[2]
+    console.log(this.id)
+
+    
 }
 }
 </script>
@@ -160,5 +223,8 @@ computed:{
 <style lang="scss">
 .hover{
  background-color:grey;
+}
+.block{
+    display: block;
 }
 </style>

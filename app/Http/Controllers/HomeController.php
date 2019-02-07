@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade as PDF;
 use App\Movie;
+use App\Booking;
 
 
 class HomeController extends Controller
@@ -24,6 +25,22 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+
+    public function savebooking(Request $req){
+        dd($req);
+        foreach ($seats as $seat) {
+            Booking::create([
+            'name'=>$req->name,
+            'phno'=>$req->phno,
+            'rindex'=>$seat['rindex'],
+            'cindex'=>$seat['lindex'],
+            'sname'=>$seat['name'];
+
+        ]);
+
+        }
+    }
     public function index()
     {
         return view('home');

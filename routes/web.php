@@ -23,6 +23,8 @@ Route::get('/booking','HomeController@booking')->name('booking');
 
 Route::get('/theatre/{id}','HomeController@theatre')->name('booking');
 
+Route::post('/savebooking','HomeController@savebooking');
+
 
 
 Route::get('/booking/pdf',"HomeController@pdfdownload")->name('pdfdownload');
