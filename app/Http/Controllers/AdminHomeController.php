@@ -86,4 +86,12 @@ class AdminHomeController extends Controller
     {
         //
     }
+    //another added methods are below 
+    public function reservationindex(){
+        return view('admin.reservation.index');
+    }
+    public function confirm($id){
+        dd($id);
+    }
+
 }

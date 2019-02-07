@@ -28,6 +28,9 @@ Route::get('/theatre','HomeController@theatre')->name('booking');
 Route::get('/booking/pdf',"HomeController@pdfdownload")->name('pdfdownload');
 Route::get('/layout','HomeController@layout')->name('layout');
 Route::get('movie/timecheck',"MovieController@timechecking")->name('timechecking');
+Route::get('admin/reserve',"AdminHomeController@reservationindex")->name('reserveindex');
+
+Route::get('admin/confirm/{id}',"AdminHomeController@confirm")->name('confirm');
 
 Route::post('movie/create1',"MovieController@create1")->name('movie.create1');
 Route::get('/customer','HomeController@customer');

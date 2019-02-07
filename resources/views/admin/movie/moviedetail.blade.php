@@ -41,6 +41,7 @@
 												<td>{{$booking->id}}</td>
 												<td>{{App\User::find($booking->customer_id)->name}}</td>
 												<td>{{$booking->movie_time}}</td>
+												
 											</tr>
 										@endforeach
 									</tbody>

@@ -28,8 +28,6 @@
 								{{$movie->name}}
 							</a>
 							@endforeach
-							
-							
 						</div>
 						
 					</div>
