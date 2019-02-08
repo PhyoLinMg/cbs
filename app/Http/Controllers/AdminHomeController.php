@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Booking;
 use App\Movie;
+use App\Sold;
 
 class AdminHomeController extends Controller
 {
@@ -88,10 +90,25 @@ class AdminHomeController extends Controller
     }
     //another added methods are below 
     public function reservationindex(){
-        return view('admin.reservation.index');
+        $bookings=Booking::get();
+        return view('admin.reservation.index',compact('bookings'));
     }
     public function confirm($id){
-        dd($id);
+        $booking=Booking::findOrFail($id);
+        Sold::create([
+            'name'=>$booking->name,
+            'phno'=>$booking->phno,
+            'mid'=>$booking->mid,
+            'seats'=>$booking->seats
+        ]);
+        return redirect('/admin/reserve');
+    }
+    public function bookingdelete($id){
+        $booking=Booking::find($id);
+        $booking->delete();
+        return redirect('/admin/reserve');
+
+
     }
 
 }

@@ -33,6 +33,8 @@ Route::get('movie/timecheck',"MovieController@timechecking")->name('timechecking
 Route::get('admin/reserve',"AdminHomeController@reservationindex")->name('reserveindex');
 
 Route::get('admin/confirm/{id}',"AdminHomeController@confirm")->name('confirm');
+Route::get('admin/delete/{id}',"AdminHomeController@bookingdelete")->name('bookingdelete');
+
 
 Route::post('movie/create1',"MovieController@create1")->name('movie.create1');
 Route::get('/customer','HomeController@customer');

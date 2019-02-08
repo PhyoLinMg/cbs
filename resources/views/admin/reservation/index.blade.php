@@ -16,17 +16,28 @@
 						<table class="table table-hover">
 							<thead>
 								<tr>
+									<td>Name</td>
+									<td>Phone Number</td>
+									<td>Seats</td>
 									<td></td>
 									<td></td>
-									<td>Confirm??</td>
 								</tr>
 							</thead>
 							<tbody>
+								@foreach ($bookings as $booking)
 								<tr>
-									<td></td>
-									<td></td>
-									<td><a href="{{ route('confirm',1) }}" class="btn btn-primary">Confirm</a></td>
-								</tr>
+									<td>{{$booking->name}}</td>
+									<td>{{$booking->phno}}</td>
+									<td>
+										@foreach ($booking->seats as $seat)
+											<span>{{$seat['name']}}</span>
+										@endforeach
+									</td>
+									<td><a href="{{ route('confirm',$booking->id) }}" class="btn btn-primary">Confirm</a></td>
+									<td><a href="{{ route('bookingdelete',$booking->id) }}" class="btn btn-danger">Delete</a></td>
+								</tr>	
+								@endforeach
+								
 							</tbody>
 						</table>
 					</div>

@@ -12,12 +12,12 @@
     </div>
     <div class="navbar-menu-wrapper d-flex align-items-center">
       <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
-        <li class="nav-item">
+        <li class="nav-item active">
           <a href="#" class="nav-link">Schedule
             <span class="badge badge-primary ml-1">New</span>
           </a>
         </li>
-        <li class="nav-item active">
+        <li class="nav-item">
           <a href="{{ route('reserveindex') }}" class="nav-link">
             <i class="mdi mdi-elevation-rise"></i>Reservation</a>
           </li>
