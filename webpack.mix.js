@@ -42,5 +42,6 @@ mix.scripts([
 	"resources/js/toastr.min.js",
 	"resources/js/validate.js",
 	"resources/js/bootstrap.min.js",
-	"resources/js/select2.full.min.js"
+	"resources/js/select2.full.min.js",
+	"resources/js/parallax.js",
 	],"public/js/all.js");

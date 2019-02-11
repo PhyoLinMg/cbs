@@ -58,18 +58,6 @@
         
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     </div>
 
 
@@ -88,7 +76,7 @@
 </div>
 <div>
 
-    <b-modal v-model="modalShow" hide-footer title="Your Information">
+    <b-modal v-model="modalShow" hide-footer title="Booking Form">
       <div class="d-block text-center">
         <div class="mb-5">
             <span class="mr-5 ">Your seats :</span>
@@ -106,7 +94,9 @@
         </div>
         
       </div>
-      <b-btn class="mt-3" variant="outline-danger" block @click="book1()">Close Me</b-btn>
+      <b-btn class="mt-3" variant="outline-primary" block @click="book1()">Book</b-btn>
+      <b-btn class="mt-3" variant="outline-danger" block @click="pdf()"><i class="mdi mdi-download"></i>PDF</b-btn>
+
     </b-modal>
  
 </div>
@@ -148,7 +138,6 @@
             if (this.reserve.length!=0) {
             this. modalShow=!this.modalShow
 
-
         }
         else{
             alert('U have to select at least one seat to be reserved')
@@ -165,13 +154,13 @@
                         mid:this.id
                   })
                   .then(function (response) {
-                    // window.location="/theatre/1"
+                     window.location="/theatre/"+this.id
                   });
       }
  
 
     },
-        click(index,i,event){
+     click(index,i,event){
             var cc=-1
             if (!event.target.classList.contains('colorblack')) {
               var  name=event.target.getAttribute('title')

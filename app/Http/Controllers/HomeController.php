@@ -32,7 +32,7 @@ class HomeController extends Controller
         Booking::create([
             'name'=>$req->name,
              'phno'=>$req->phno,
-           'seats'=>$seats, 
+           'seats'=>$seats,
            'mid'=>$req->mid
         ]);
 
@@ -68,9 +68,11 @@ class HomeController extends Controller
 
 
 
- public function pdfdownload(){
-     $pdf = PDF::loadView('pdf');
-     return $pdf->download('test.pdf');
+ public function pdfdownload(Request $request){
+    $booking=Booking::latest()->first();
+    $seats=$booking->seats;
+    $pdf = PDF::loadView('pdf',compact('booking','seats'));
+    return $pdf->download('test.pdf');
  }
  public function layout(){
 

@@ -83,8 +83,7 @@ class MovieController extends Controller
 
     public function showdetail($id){
         $movie=Movie::findOrFail($id);
-        $bookings=Booking::where('movie_id',$id)->get();
-        $times=Booking::select('movie_time')->where('movie_id',$id)->distinct()->get();
+        $bookings=Booking::where('mid',$id)->get();
 
         return view('admin.movie.moviedetail',compact('bookings','movie','times'));
     }

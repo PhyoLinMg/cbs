@@ -1868,16 +1868,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1926,7 +1916,8 @@ __webpack_require__.r(__webpack_exports__);
           phno: this.phno,
           seats: this.reserve,
           mid: this.id
-        }).then(function (response) {// window.location="/theatre/1"
+        }).then(function (response) {
+          window.location = "/theatre/" + this.id;
         });
       }
     },
@@ -55127,7 +55118,7 @@ var render = function() {
         _c(
           "b-modal",
           {
-            attrs: { "hide-footer": "", title: "Your Information" },
+            attrs: { "hide-footer": "", title: "Booking Form" },
             model: {
               value: _vm.modalShow,
               callback: function($$v) {
@@ -55216,14 +55207,28 @@ var render = function() {
               "b-btn",
               {
                 staticClass: "mt-3",
-                attrs: { variant: "outline-danger", block: "" },
+                attrs: { variant: "outline-primary", block: "" },
                 on: {
                   click: function($event) {
                     _vm.book1()
                   }
                 }
               },
-              [_vm._v("Close Me")]
+              [_vm._v("Book")]
+            ),
+            _vm._v(" "),
+            _c(
+              "b-btn",
+              {
+                staticClass: "mt-3",
+                attrs: { variant: "outline-danger", block: "" },
+                on: {
+                  click: function($event) {
+                    _vm.pdf()
+                  }
+                }
+              },
+              [_c("i", { staticClass: "mdi mdi-download" }), _vm._v("PDF")]
             )
           ],
           1

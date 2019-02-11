@@ -91,6 +91,9 @@ class AdminHomeController extends Controller
     //another added methods are below 
     public function reservationindex(){
         $bookings=Booking::get();
+        foreach ($bookings as $booking) {
+            dd(gettype($booking->seats));
+        }
         return view('admin.reservation.index',compact('bookings'));
     }
     public function confirm($id){

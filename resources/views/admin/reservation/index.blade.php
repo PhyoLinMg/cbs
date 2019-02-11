@@ -25,6 +25,7 @@
 							</thead>
 							<tbody>
 								@foreach ($bookings as $booking)
+								
 								<tr>
 									<td>{{$booking->name}}</td>
 									<td>{{$booking->phno}}</td>

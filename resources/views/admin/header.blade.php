@@ -19,7 +19,7 @@
         </li>
         <li class="nav-item">
           <a href="{{ route('reserveindex') }}" class="nav-link">
-            <i class="mdi mdi-elevation-rise"></i>Reservation</a>
+            <i class="mdi mdi-headset"></i>Reservation</a>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">

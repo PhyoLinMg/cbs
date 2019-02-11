@@ -11,7 +11,6 @@
 			<div class="col-md-12 grid-margin stretch-card">
 				<div class="card back-prime">
 					<div class="card-body">
-
 						<div class="card" style="width: 18rem;">
 							@php
 							$medias=$movie->getMedia();
@@ -39,9 +38,10 @@
 										@foreach($bookings as $booking)
 											<tr>
 												<td>{{$booking->id}}</td>
-												<td>{{App\User::find($booking->customer_id)->name}}</td>
-												<td>{{$booking->movie_time}}</td>
-												
+												<td>{{$booking->name}}</td>
+												<td>@foreach ($booking->seats as $seat)
+													<span>{{$seat['name']}}</span>
+												@endforeach</tr>
 											</tr>
 										@endforeach
 									</tbody>
