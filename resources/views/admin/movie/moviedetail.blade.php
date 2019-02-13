@@ -23,7 +23,7 @@
 							</div>
 						</div>
 						<div class="container-fluid">
-							<h3>Movie Booking</h3>
+							<h3>Ticket Sold</h3>
 							<hr>
 							<div class="row">
 								<table class="table table-striped">
@@ -35,11 +35,11 @@
 										</tr>
 									</thead>
 									<tbody>
-										@foreach($bookings as $booking)
+										@foreach($solds as $sold)
 											<tr>
-												<td>{{$booking->id}}</td>
-												<td>{{$booking->name}}</td>
-												<td>@foreach ($booking->seats as $seat)
+												<td>{{$sold->id}}</td>
+												<td>{{$sold->name}}</td>
+												<td>@foreach ($sold->seats as $seat)
 													<span>{{$seat['name']}}</span>
 												@endforeach</tr>
 											</tr>

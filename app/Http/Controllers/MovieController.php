@@ -7,6 +7,7 @@ use App\Movie;
 use App\Movietype;
 use App\Room;
 use App\Booking;
+use App\Sold;
 
 class MovieController extends Controller
 {
@@ -83,9 +84,9 @@ class MovieController extends Controller
 
     public function showdetail($id){
         $movie=Movie::findOrFail($id);
-        $bookings=Booking::where('mid',$id)->get();
+        $solds=Sold::where('mid',$id)->get();
 
-        return view('admin.movie.moviedetail',compact('bookings','movie','times'));
+        return view('admin.movie.moviedetail',compact('solds','movie','times'));
     }
 
     /**
