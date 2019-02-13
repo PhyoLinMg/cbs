@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 07, 2019 at 12:38 PM
+-- Generation Time: Feb 13, 2019 at 12:16 PM
 -- Server version: 5.7.25-0ubuntu0.18.04.2
 -- PHP Version: 7.2.10-0ubuntu0.18.04.1
 
@@ -28,13 +28,10 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `bookings` (
   `id` int(10) UNSIGNED NOT NULL,
-  `customer_id` int(11) NOT NULL,
-  `movie_id` int(11) NOT NULL,
-  `movie_time` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ticket_price` int(11) NOT NULL,
-  `no_of_seat` int(11) NOT NULL,
-  `target_date` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `booking_date` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phno` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mid` int(11) NOT NULL,
+  `seats` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -43,10 +40,10 @@ CREATE TABLE `bookings` (
 -- Dumping data for table `bookings`
 --
 
-INSERT INTO `bookings` (`id`, `customer_id`, `movie_id`, `movie_time`, `ticket_price`, `no_of_seat`, `target_date`, `booking_date`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, '11:00 AM', 3500, 4, '2019-01-27', '2018-12-11', NULL, NULL),
-(2, 1, 1, '11:00 AM', 4000, 2, '', '', NULL, NULL),
-(3, 1, 1, '1:00 PM', 3500, 4, '2019-01-28', '2018-12-01', NULL, NULL);
+INSERT INTO `bookings` (`id`, `name`, `phno`, `mid`, `seats`, `created_at`, `updated_at`) VALUES
+(1, 'Linmg', '641185103', 1, '[{\"rindex\":1,\"cindex\":2,\"name\":\"B-3\"},{\"rindex\":1,\"cindex\":3,\"name\":\"B-4\"},{\"rindex\":2,\"cindex\":2,\"name\":\"C-3\"},{\"rindex\":2,\"cindex\":3,\"name\":\"C-4\"}]', '2019-02-08 08:23:02', '2019-02-08 08:23:02'),
+(2, 'mgmg', '123123123123', 1, '[{\"rindex\":3,\"cindex\":5,\"name\":\"D-6\"},{\"rindex\":5,\"cindex\":4,\"name\":\"F-5\"},{\"rindex\":1,\"cindex\":3,\"name\":\"B-4\"}]', '2019-02-11 06:05:46', '2019-02-11 06:05:46'),
+(3, 'pmlk', '123123321123', 1, '[{\"rindex\":0,\"cindex\":6,\"name\":\"A-7\"},{\"rindex\":0,\"cindex\":5,\"name\":\"A-6\"}]', '2019-02-11 06:08:01', '2019-02-11 06:08:01');
 
 -- --------------------------------------------------------
 
@@ -89,8 +86,8 @@ CREATE TABLE `media` (
 --
 
 INSERT INTO `media` (`id`, `model_type`, `model_id`, `collection_name`, `name`, `file_name`, `mime_type`, `disk`, `size`, `manipulations`, `custom_properties`, `responsive_images`, `order_column`, `created_at`, `updated_at`) VALUES
-(1, 'App\\Movie', 1, 'default', 'FB_IMG_1509296144460', 'FB_IMG_1509296144460.jpg', 'image/jpeg', 'public', 68193, '[]', '[]', '[]', 1, '2019-01-25 09:39:45', '2019-01-25 09:39:45'),
-(2, 'App\\Movie', 2, 'default', 'gg', 'gg.jpg', 'image/jpeg', 'public', 69683, '[]', '[]', '[]', 2, '2019-02-07 04:48:20', '2019-02-07 04:48:20');
+(1, 'App\\Movie', 1, 'default', 'FB_IMG_1509296144460', 'FB_IMG_1509296144460.jpg', 'image/jpeg', 'public', 68193, '[]', '[]', '[]', 1, '2019-02-11 08:00:52', '2019-02-11 08:00:52'),
+(2, 'App\\Movie', 2, 'default', 'b073331dece34c5bfac52f87f9888211', 'b073331dece34c5bfac52f87f9888211.jpg', 'image/jpeg', 'public', 189742, '[]', '[]', '[]', 2, '2019-02-11 09:13:50', '2019-02-11 09:13:50');
 
 -- --------------------------------------------------------
 
@@ -109,17 +106,18 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(12, '2014_10_12_000000_create_users_table', 1),
-(13, '2014_10_12_100000_create_password_resets_table', 1),
-(14, '2019_01_16_122655_create_bookings_table', 1),
-(15, '2019_01_16_122710_create_customers_table', 1),
-(16, '2019_01_16_122723_create_movietypes_table', 1),
-(17, '2019_01_16_122746_create_movies_table', 1),
-(18, '2019_01_16_122755_create_rooms_table', 1),
-(19, '2019_01_16_122812_create_seattypes_table', 1),
-(20, '2019_01_16_122823_create_tmpseats_table', 1),
-(21, '2019_01_22_025919_create_movie_movietype_table', 1),
-(22, '2019_01_22_093215_create_media_table', 1);
+(47, '2014_10_12_000000_create_users_table', 1),
+(48, '2014_10_12_100000_create_password_resets_table', 1),
+(49, '2019_01_16_122655_create_bookings_table', 1),
+(50, '2019_01_16_122710_create_customers_table', 1),
+(51, '2019_01_16_122723_create_movietypes_table', 1),
+(52, '2019_01_16_122746_create_movies_table', 1),
+(53, '2019_01_16_122755_create_rooms_table', 1),
+(54, '2019_01_16_122812_create_seattypes_table', 1),
+(55, '2019_01_16_122823_create_tmpseats_table', 1),
+(56, '2019_01_22_025919_create_movie_movietype_table', 1),
+(57, '2019_01_22_093215_create_media_table', 1),
+(58, '2019_02_08_141541_create_sold_table', 1);
 
 -- --------------------------------------------------------
 
@@ -144,8 +142,8 @@ CREATE TABLE `movies` (
 --
 
 INSERT INTO `movies` (`id`, `name`, `room_id`, `descrption`, `time`, `startdate`, `enddate`, `created_at`, `updated_at`) VALUES
-(1, 'Avenger\'s End Game', 1, 'The end game of Avengers:End Game', '01:00 am', '2019-01-04', '2019-01-30', '2019-01-25 09:39:45', '2019-01-25 09:39:45'),
-(2, 'Hello world', 2, 'safcas sdfad', '09:09 pm', '2019-02-04', '2019-02-13', '2019-02-07 04:48:19', '2019-02-07 04:48:19');
+(1, 'Avenger\'s End Game', 2, 'cacsdacasdgfrecdsg dfcx', '09:09 pm', '2019-02-05', '2019-02-28', '2019-02-11 08:00:52', '2019-02-11 08:00:52'),
+(2, 'GG', 2, 'asf asv a sdc sdsac', '09:09 pm', '2019-02-27', '2019-02-21', '2019-02-11 09:13:50', '2019-02-11 09:13:50');
 
 -- --------------------------------------------------------
 
@@ -165,8 +163,8 @@ CREATE TABLE `movietypes` (
 --
 
 INSERT INTO `movietypes` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'Action', NULL, NULL),
-(2, 'Romance', NULL, NULL);
+(1, 'action', '2019-02-11 07:59:29', '2019-02-11 07:59:29'),
+(2, 'romance', '2019-02-11 07:59:41', '2019-02-11 07:59:41');
 
 -- --------------------------------------------------------
 
@@ -188,8 +186,7 @@ CREATE TABLE `movie_movietype` (
 
 INSERT INTO `movie_movietype` (`id`, `movie_id`, `movietype_id`, `created_at`, `updated_at`) VALUES
 (1, 1, 1, NULL, NULL),
-(2, 2, 2, NULL, NULL),
-(3, 2, 1, NULL, NULL);
+(2, 2, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -222,8 +219,8 @@ CREATE TABLE `rooms` (
 --
 
 INSERT INTO `rooms` (`id`, `name`, `total_rows`, `created_at`, `updated_at`) VALUES
-(1, 'Threatre of Dreams\r\n', 123, NULL, NULL),
-(2, 'Blah', 1234, NULL, NULL);
+(1, 'Theatre of Dreams', 154, NULL, NULL),
+(2, 'Yume NO Chikara', 120, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -240,6 +237,45 @@ CREATE TABLE `seattypes` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sold`
+--
+
+CREATE TABLE `sold` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phno` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mid` int(11) NOT NULL,
+  `seats` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `solds`
+--
+
+CREATE TABLE `solds` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phno` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mid` int(11) NOT NULL,
+  `seats` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `solds`
+--
+
+INSERT INTO `solds` (`id`, `name`, `phno`, `mid`, `seats`, `created_at`, `updated_at`) VALUES
+(1, 'Linmg', '641185103', 1, '[{\"rindex\":1,\"cindex\":2,\"name\":\"B-3\"},{\"rindex\":1,\"cindex\":3,\"name\":\"B-4\"},{\"rindex\":2,\"cindex\":2,\"name\":\"C-3\"},{\"rindex\":2,\"cindex\":3,\"name\":\"C-4\"}]', '2019-02-08 08:25:47', '2019-02-08 08:25:47');
 
 -- --------------------------------------------------------
 
@@ -282,7 +318,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `phone`, `dob`, `gender`, `role`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin@gmail.com', NULL, '$2y$10$iXvO2julCuQgeaCRaIfZm.dJU9ed5LEcrehZh0JXc7BdcTP9lDT1S', '4561406', '2019-01-08', 'male', 'admin', '2xDxAxc3a3Sfp3V03H7r8z7db92AFaxuv5zjrVetbUh2leCtLv4AjnMUDV1u', '2019-01-25 09:34:25', '2019-01-25 09:34:25');
+(1, 'admin', 'admin@gmail.com', NULL, '$2y$10$EwMUfDMePTfNzjRPeKZKZu.LEmD7ZPNWq6tZysEtYSbjw3UbAsUlO', '4308516', '2019-02-20', 'male', 'admin', 'zZVjqZiNM0RRtbFaPIvY18FtPYhisYCa4PmFwETYdnGm09c1eimpWCaP68py', '2019-02-08 08:23:51', '2019-02-08 08:23:51');
 
 --
 -- Indexes for dumped tables
@@ -350,6 +386,18 @@ ALTER TABLE `seattypes`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `sold`
+--
+ALTER TABLE `sold`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `solds`
+--
+ALTER TABLE `solds`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tmpseats`
 --
 ALTER TABLE `tmpseats`
@@ -385,7 +433,7 @@ ALTER TABLE `media`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 --
 -- AUTO_INCREMENT for table `movies`
 --
@@ -400,7 +448,7 @@ ALTER TABLE `movietypes`
 -- AUTO_INCREMENT for table `movie_movietype`
 --
 ALTER TABLE `movie_movietype`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `rooms`
 --
@@ -411,6 +459,16 @@ ALTER TABLE `rooms`
 --
 ALTER TABLE `seattypes`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `sold`
+--
+ALTER TABLE `sold`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `solds`
+--
+ALTER TABLE `solds`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tmpseats`
 --

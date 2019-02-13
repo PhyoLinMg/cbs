@@ -72,7 +72,7 @@ class HomeController extends Controller
     $booking=Booking::latest()->first();
     $seats=$booking->seats;
     $pdf = PDF::loadView('pdf',compact('booking','seats'));
-    return $pdf->download('test.pdf');
+    return $pdf->download('Booking.pdf');
  }
  public function layout(){
 
