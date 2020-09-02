@@ -27,7 +27,7 @@
         "@coreui/coreui": "^2.1.6",
         "laravel-echo": "^1.5.2",
         "pusher-js": "^4.3.1",
-        "bootstrap-vue": "^2.0.0-rc.11",
+        "bootstrap-vue": "^2.0.0-rc.12",
         "vuelidate": "^0.7.4"
     }
 }
